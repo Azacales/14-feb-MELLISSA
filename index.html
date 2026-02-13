@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For Mellissa 💖</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Arial', cursive;
+    background: pink;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+/* penguin background */
+body::before {
+    content: "🐧💗 🐧💗 🐧💗 🐧💗 🐧💗 🐧💗";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    font-size: 40px;
+    opacity: 0.2;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    line-height: 100px;
+}
+
+/* general sections */
+.section {
+    display: none;
+    padding: 50px;
+}
+
+.active {
+    display: block;
+}
+
+/* letter */
+.letter {
+    font-size: 120px;
+    cursor: pointer;
+    margin-top: 150px;
+    transition: 0.3s;
+}
+
+.letter:hover {
+    transform: scale(1.1);
+}
+
+.text-box {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+    font-size: 18px;
+}
+
+/* buttons */
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 15px;
+    background: hotpink;
+    color: white;
+}
+
+button:hover {
+    background: deeppink;
+}
+
+/* images */
+img {
+    max-width: 300px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+/* confetti */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: red;
+    top: 0;
+    animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SECTION 1 - LETTER -->
+<div id="home" class="section active">
+    <div class="letter" onclick="openLetter()">💌</div>
+</div>
+
+<!-- SECTION 2 - TEXT -->
+<div id="letterText" class="section">
+    <div class="text-box">
+        mellissa i know you said you didnt want anything for valentines and i really wanted to send u some flowers or a gift but since i can i made this website even if i never made a website in my life to ask you to be mine . you are my favorite person in this world and i always want to be by your side and make you happy like you do for me everyday 💖
+    </div>
+    <button onclick="goToProposal()">Next 💕</button>
+</div>
+
+<!-- SECTION 3 - PROPOSAL -->
+<div id="proposal" class="section">
+    <h1>Mellissa 💗</h1>
+    <h2>Will you be my Valentine?</h2>
+    <img src="cat.png" alt="cute kitten">
+    <div>
+        <button onclick="sheSaidYes()">YES 💖</button>
+        <button onclick="sheSaidNo()">NO 💔</button>
+    </div>
+</div>
+
+<!-- SECTION 4 - YES PAGE -->
+<div id="yesPage" class="section">
+    <h1 style="font-size:50px;">SHE SAID YESSSSS !!! 🎉💖</h1>
+    <img src="dog.png" alt="happy dog">
+</div>
+
+<!-- SECTION 5 - NO PAGE -->
+<div id="noPage" class="section">
+    <h1>😢 Okay... I'll try again next year...</h1>
+</div>
+
+<script>
+function openLetter() {
+    document.getElementById("home").classList.remove("active");
+    document.getElementById("letterText").classList.add("active");
+}
+
+function goToProposal() {
+    document.getElementById("letterText").classList.remove("active");
+    document.getElementById("proposal").classList.add("active");
+}
+
+function sheSaidYes() {
+    document.getElementById("proposal").classList.remove("active");
+    document.getElementById("yesPage").classList.add("active");
+    createConfetti();
+}
+
+function sheSaidNo() {
+    document.getElementById("proposal").classList.remove("active");
+    document.getElementById("noPage").classList.add("active");
+}
+
+function createConfetti() {
+    for (let i = 0; i < 100; i++) {
+        let confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor = 
+            ["pink","red","hotpink","white"][Math.floor(Math.random()*4)];
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(confetti);
+    }
+}
+</script>
+
+</body>
+</html>
